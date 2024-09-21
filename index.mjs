@@ -28,6 +28,10 @@ const virtualRepresentation = [
   }
 ]
 
-function createElement(type, props, children) {
-  return;
+export function createElement(type, props, ...children) {
+  return {
+    type,
+    props,
+    children
+  };
 }
