@@ -28,7 +28,7 @@ const virtualRepresentation = [
   }
 ]
 
-export function createElement(type, props, ...children) {
+export function vdomify(type, props, ...children) {
   return {
     type,
     props,

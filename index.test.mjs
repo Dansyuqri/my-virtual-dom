@@ -1,9 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createElement } from './index.mjs';
+import { vdomify } from './index.mjs';
 
 test('create header', () => {
-  const createdElement = createElement('h1', {}, 'test');
+  const createdElement = vdomify('h1', {}, 'test');
   assert.deepEqual(createdElement, {
     type: 'h1',
     props: {},
@@ -12,7 +12,7 @@ test('create header', () => {
 });
 
 test('create element with props', () => {
-  const createdElement = createElement('ul', { 'class': 'list' });
+  const createdElement = vdomify('ul', { 'class': 'list' });
   assert.deepEqual(createdElement, {
     type: 'ul',
     props: {
@@ -23,9 +23,9 @@ test('create element with props', () => {
 });
 
 test('create element with props and children', () => {
-  const createdElement = createElement('ul', { 'class': 'list' },
-    createElement('li', {}, 'hello'),
-    createElement('li', {}, 'world'),
+  const createdElement = vdomify('ul', { 'class': 'list' },
+    vdomify('li', {}, 'hello'),
+    vdomify('li', {}, 'world'),
   );
   assert.deepEqual(createdElement, {
     type: 'ul',
